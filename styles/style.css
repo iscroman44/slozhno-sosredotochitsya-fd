@@ -1,5 +1,357 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  font-family: "IBM Plex mono", monospace;
+  font-size: 18px;
+  background-color: var(--background-color, #000028);
+  background-image: var(--path-background, url(../images/cover-image-dark.png));
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-attachment: fixed;
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+}
+
+.header {
+  position: relative;
+  min-block-size: 668px;
+  block-size: 100dvh;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr min-content 1fr;
+}
+
+.decorated-zone::before {
+  content: "";
+  display: inline-block;
+  inline-size: 25px;
+  block-size: 25px;
+  position: absolute;
+  inset-inline-end: 10px;
+  inset-block-start: 10px;
+  border-inline-end: 1px solid var(--nav-color, #ff0070);
+  border-block-start: 1px solid var(--nav-color, #ff0070);
+}
+
+.decorated-zone::after {
+  content: "";
+  display: inline-block;
+  inline-size: 25px;
+  block-size: 25px;
+  position: absolute;
+  inset-inline-start: 10px;
+  inset-block-end: 10px;
+  border-inline-start: 1px solid var(--nav-color, #ff0070);
+  border-block-end: 1px solid var(--nav-color, #ff0070);
+}
+
+.decor-in-dark-theme {
+  position: absolute;
+  visibility: var(--decor-visibility, visible);
+  inset-inline-end: 10px;
+  inset-block-start: 10px;
+}
+
+.decor-in-dark-theme::before {
+  content: "REC";
+  color: var(--nav-color, #ff0070);
+}
+
+.decor-in-dark-theme::after {
+  content: "";
+  display: inline-block;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--nav-color, #ff0070);
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 2px var(--nav-color, #ff0070);
+  margin-inline-end: 9px;
+  margin-inline-start: 10px;
+}
+
+.header__theme-menu {
+  justify-self: flex-end;
+  align-self: center;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.header__theme-menu-item {
+  display: block;
+}
+
+.header__theme-menu-button {
+  text-transform: lowercase;
+  background-color: transparent;
+  color: var(--nav-color, #ff0070);
+  line-height: 18px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 2px 12px;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--hover-color, rgba(255, 0, 112, 0.4));
+}
+
+.about__ref:focus,
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid currentColor;
+  margin-block-end: -1px;
+}
+
+.header__theme-menu-button_active {
+  border-color: currentColor;
+  pointer-events: none;
+}
+
+.footer__title,
+.header__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  line-height: 95.7px;
+  color: var(--title-color, #db00ff);
+  text-shadow: 4px 4px 0px var(--shadow-focus, #ff0070);
+}
+
+.header__subtitle {
+  font-weight: 700;
+  align-self: center;
+}
+
+.title-decor {
+  color: var(--main-color, #000028);
+  background-color: var(--accent-color, #ff0070);
+}
+
+.main {
+  display: grid;
+  gap: 50px;
+  padding: 40px 10px 40px;
+}
+
+.about {
+  display: grid;
+  line-height: 23.4px;
+  gap: 20px;
+}
+
+.about__title {
+  color: var(--about-title, #ff0070);
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.about__article-list {
+  display: grid;
+  gap: 20px;
+}
+
+.about__article {
+  display: grid;
+  gap: 10px;
+}
+
+.about__subtitle {
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.about__text {
+  font-weight: 400;
+  color: var(--text-color, #f1b2ce);
+}
+
+.about__ref {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--shadow-focus, #ff0070);
+}
+
+.about__ref:hover {
+  border-bottom: 1px solid currentColor;
+}
+
+.about__ref:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+.gallery {
+  display: grid;
+  line-height: 23.4px;
+  gap: 10px;
+}
+
+.gallery__image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gallery__list {
+  display: grid;
+  gap: 10px;
+}
+
+.gallery__list-item {
+  display: grid;
+}
+
+.footer {
+  position: relative;
+  min-block-size: 668px;
+  block-size: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.footer__title {
+  text-shadow: 2px 2px 0px var(--shadow-focus-footer, #ff0070);
+}
+
+@media (width >= 768px) {
+  .header {
+    padding: 20px 20px 20px 0;
+  }
+
+  .decorated-zone::before {
+    inset-inline-end: 20px;
+    inset-block-start: 20px;
+  }
+
+  .decorated-zone::after {
+    inset-inline-start: 20px;
+    inset-block-end: 20px;
+  }
+
+  .decor-in-dark-theme {
+    inset-inline-end: 20px;
+    inset-block-start: 20px;
+  }
+
+  .header__theme-menu {
+    align-self: center;
+  }
+
+  .footer__title,
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__subtitle {
+    justify-self: flex-end;
+    align-self: center;
+    inline-size: calc(50% - 10px);
+  }
+
+  .main {
+    display: grid;
+    gap: 80px;
+    padding: 60px 20px 70px;
+  }
+
+  .about {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .about__list {
+    align-self: flex-start;
+  }
+
+  .about.about__title {
+    grid-column: 1;
+  }
+
+  .container {
+    grid-column: span 2;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .gallery__list {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+      "sunset sunset ice-cream"
+      "tape books ice-cream"
+      "tape street street";
+  }
+
+  .gallery__list-item {
+    display: flex;
+  }
+  .gallery__list-item:not(:last-child) {
+    padding-block-end: 0px;
+  }
+
+  .gallery__list-item:first-child {
+    grid-area: sunset;
+  }
+
+  .gallery__list-item:nth-child(2) {
+    grid-area: ice-cream;
+  }
+
+  .gallery__list-item:nth-child(4) {
+    grid-area: books;
+  }
+
+  .gallery__list-item:last-child {
+    grid-area: street;
+  }
+
+  .gallery__list-item:nth-child(3) {
+    grid-area: tape;
+    background-color: #db00ff;
+  }
+}
+
+@media (width >= 1024px) {
+  .main {
+    padding: 60px 20px 60px;
+  }
+
+  .header__theme-menu {
+    justify-self: center;
+    align-self: flex-start;
+    margin-inline-start: 20px;
+  }
+
+  .header__subtitle {
+    margin-block-start: 20px;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .about {
+    gap: 10px;
+  }
+
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    padding-block-start: 10px;
+  }
+
+  .gallery {
+    gap: 20px;
+  }
 }
