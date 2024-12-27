@@ -7,6 +7,7 @@
   background-image: var(--path-background, url(../images/cover-image-dark.png));
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   object-fit: cover;
   background-attachment: fixed;
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
@@ -261,7 +262,7 @@
   .main {
     display: grid;
     gap: 80px;
-    padding: 60px 20px 70px;
+    padding: 60px 20px 60px;
   }
 
   .about {
@@ -283,6 +284,7 @@
   .gallery {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    gap: 20px;
   }
 
   .gallery__list {
@@ -324,10 +326,6 @@
 }
 
 @media (width >= 1024px) {
-  .main {
-    padding: 60px 20px 60px;
-  }
-
   .header__theme-menu {
     justify-self: center;
     align-self: flex-start;
@@ -349,9 +347,5 @@
   .container {
     grid-template-columns: repeat(3, 1fr);
     padding-block-start: 10px;
-  }
-
-  .gallery {
-    gap: 20px;
   }
 }
