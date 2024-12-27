@@ -152,6 +152,7 @@
   font-size: inherit;
 }
 
+.about__container,
 .about__article-list {
   display: grid;
   gap: 20px;
@@ -267,10 +268,6 @@
 
   .about {
     grid-template-columns: 1fr 2fr;
-  }
-
-  .about__list {
-    align-self: flex-start;
   }
 
   .about.about__title {
